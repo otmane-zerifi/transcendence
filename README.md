@@ -64,7 +64,7 @@ The frontend is crafted using:
 - **Vanilla JavaScript:** For dynamic interactions and real-time features
 - **WebSocket Integration:** Enables real-time communication for chat and games
 ---
-🧱 Microservices & Containerization
+##  🧱 Microservices & Containerization:
 
 This project follows a microservices architecture, where key features like authentication,
 chat, game logic, and notifications are organized as independent services.
