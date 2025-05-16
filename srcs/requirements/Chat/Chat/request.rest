@@ -1,0 +1,160 @@
+###
+POST http://127.0.0.1:8000/api/user/register/
+Content-Type: application/json
+
+{
+    "email": "allaoui6mohamed@gmail.com",
+    "user_name": "allaoui",
+    "password": "123"
+}
+###
+POST http://127.0.0.1:8000/api/user/register/
+Content-Type: application/json
+
+{
+    "email": "2@gmail.com",
+    "user_name": "2",
+    "password": "123"
+}
+
+###
+POST http://127.0.0.1:8000/api/user/login/
+Content-Type: application/json
+
+{
+    "email": "allaoui6mohamed@gmail.com",
+    "password": "123"
+}
+
+###
+POST http://127.0.0.1:8000/api/user/login/
+Content-Type: application/json
+
+{
+    "email": "2@gmail.com",
+    "password": "123"
+}
+###
+
+POST http://localhost:8000/api/friends/friend-requests/
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTAyMjA2LCJpYXQiOjE3Mzc4NDIyMDYsImp0aSI6IjQ0N2VmNjYyMDdjYTQyMjI5MTM0YzU2ZWZmMjkxYjY0IiwidXNlcl9pZCI6MX0.x0K2YuilUHO-C0ZR1I2BbvnstyvNIQ8TGEB03o0nh0Q
+# refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzkyODYwNiwiaWF0IjoxNzM3ODQyMjA2LCJqdGkiOiI5YTRlMzY1NWM4NDI0MGIzOWRjM2ZmYjNlMzZmNGQ4MSIsInVzZXJfaWQiOjF9.2Eu_10aoSfuH6y3X8irkvIduhtGiNf1obOncFzxBhxc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTA2NzM5LCJpYXQiOjE3Mzc5MDU4MzksImp0aSI6IjJlY2I4ODFiYzRjZjRiYmY5MzQwNzdmZGUyZjgxNDU3IiwidXNlcl9pZCI6Mn0.-aJ_I40ClUfVsXWPOZb5_jGtJh59Qxqr0sw9wT5XWnM
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzk5MjIzOSwiaWF0IjoxNzM3OTA1ODM5LCJqdGkiOiI2ZTYyNjNkYzQ4Yzc0MTQzOWMyNjQ3MThmYmFkMmUyMSIsInVzZXJfaWQiOjJ9.jpFtVLTyLYleZYeu83-wJG6sBaj-EejDuaaFDQds76Y
+Content-Type: application/json
+
+{
+    "receiver": "3"
+}
+
+###
+POST http://localhost:8000/api/friends/friend-requests/accept/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTA2NzgxLCJpYXQiOjE3Mzc5MDU4ODEsImp0aSI6IjA3MTBkMTBiY2E5MjRmMDA4ODBkZjVjOWRkNDczZDE0IiwidXNlcl9pZCI6M30.eJKsIttDjNElfVb2WExS4mTl-AwrGCyqUBfQLwTY3ww
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzk5MjI4MSwiaWF0IjoxNzM3OTA1ODgxLCJqdGkiOiIwNTA5ZmYzMDYzYTc0YTY1OTdmMDIzNDFiM2EwMjlmNCIsInVzZXJfaWQiOjN9.XcBrV_Qvv4sC5Yex1W_f_GrPsDFh64s9nAH7oYHhU4I
+Content-Type: application/json
+
+{
+    "user_id": "2"
+}
+###
+GET  http://127.0.0.1:8000/api/user/verify-email/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzEzOTQ3LCJpYXQiOjE3MzU3MTM2NDcsImp0aSI6IjJiMzcyZDE1MDA3NDQyMmZiMjBlMTBiZTcwNWUwNTFmIiwidXNlcl9pZCI6MX0.eK8DmW4IghotSFs1JL8wEj9lrFs_cC3JuWEXRSi3g7E
+
+
+###
+POST http://127.0.0.1:8000/api/user/login/
+Content-Type: application/json
+
+{
+    "email": "otmanamrani747@gmail.com",
+    "password": "Polm951753"
+}
+### 
+GET http://localhost:8000/api/friends/friends/ 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTAxODc3LCJpYXQiOjE3Mzc4NDE4NzcsImp0aSI6ImI1MzQ4YTNiMjBmZjQ5ZjE4MWJhMWUxMmE0ODU0YWUzIiwidXNlcl9pZCI6MzR9.Ey_xb8dpC0uAr148BOku6dtD4wjoMzrhuuJpcZXtmC8
+Content-Type: application/json
+
+###
+GET http://127.0.0.1:8000/api/user/profile
+Authorization: Baerer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTAyMDMxLCJpYXQiOjE3Mzc4NDIwMzEsImp0aSI6ImYzYmVhOGY2YWZlOTRhOWU4YTIwZGY3NzQ0MGE4ZjYxIiwidXNlcl9pZCI6MX0._u9x5bpvUk9uvuucYUqzt9SAVGtg2j81piaajASk1U4
+refresh: 
+
+###
+GET http://127.0.0.1:8000/api/user/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+
+###
+POST http://127.0.0.1:8000/api/user/logout/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc"
+}
+
+###
+POST http://127.0.0.1:8000/api/user/refresh/token/
+Content-Type: application/json
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ3MzI1LCJpYXQiOjE3MzcwNDcxODgsImp0aSI6IjE5ZWM5ZmNlZTMyNDQxMGRiZmViYTA5NGZkY2ZiM2EzIiwidXNlcl9pZCI6MX0.zlKKAbxF5gkSSmdXkZk1y_MeMy_nYL4fKadfoDx3ueI"
+}
+
+###
+POST http://127.0.0.1:8000/api/user/otp-verification/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc
+Content-Type: application/json
+
+{
+    "otp": "441633"
+}
+
+###
+GET http://127.0.0.1:8000/api/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTAyMjA2LCJpYXQiOjE3Mzc4NDIyMDYsImp0aSI6IjQ0N2VmNjYyMDdjYTQyMjI5MTM0YzU2ZWZmMjkxYjY0IiwidXNlcl9pZCI6MX0.x0K2YuilUHO-C0ZR1I2BbvnstyvNIQ8TGEB03o0nh0Q
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzkyODYwNiwiaWF0IjoxNzM3ODQyMjA2LCJqdGkiOiI5YTRlMzY1NWM4NDI0MGIzOWRjM2ZmYjNlMzZmNGQ4MSIsInVzZXJfaWQiOjF9.2Eu_10aoSfuH6y3X8irkvIduhtGiNf1obOncFzxBhxc
+
+###
+GET http://127.0.0.1:8000/api/user/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3OTAyMjc5LCJpYXQiOjE3Mzc4NDIyNzksImp0aSI6ImJhN2VkMTQ1NjE4MzQ1ZjJhNWZmMDAyZjg5MGI4MTg0IiwidXNlcl9pZCI6MzR9.LjRx4H2f1QtW7kmnCTgQI38bh-ME_PjdueUUafp7Flk
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzkyODY3OSwiaWF0IjoxNzM3ODQyMjc5LCJqdGkiOiIxZGNhYTQ1YzJkMTI0NzBmOThmNDY1YjA4MDkxMmE5NSIsInVzZXJfaWQiOjM0fQ.Ni0vt-8rIqfFOvCGzZ1qWG92O2Ov56BTdlHCyavbn_8
+
+
+###
+PUT http://127.0.0.1:8000/api/user/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc
+Content-Type: application/json
+
+{
+    "first_name": "Nouh",
+    "last_name": "ABBOUNE"
+}
+
+###
+GET http://127.0.0.1:8000/api/user/profile/ChicMode
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc
+
+###
+POST http://127.0.0.1:8000/api/user/search/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo
+refresh: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc
+Content-Type: application/json
+
+{
+    "search": "i"
+}
+
+
+
+# {
+#   "message": "User is successfully logged in!",
+#   "user": {
+#     "id": 1,
+#     "username": "ChicMode",
+#     "email": "chicmodeactivated@gmail.com",
+#     "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNzEzMzg1MCwiaWF0IjoxNzM3MDQ3NDUwLCJqdGkiOiJiZGVkN2ZhNTYyYjk0YTI0YTMzOWMyMmZkZmFlNGUyZSIsInVzZXJfaWQiOjF9.WhLCjiVRb2RDs3_1DX1bkKvrVzTVBi35cODMqYFjxHc",
+#     "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MDQ4MzUwLCJpYXQiOjE3MzcwNDc0NTAsImp0aSI6IjNjY2FhMDZiNGNmZDQyNDY4ZWVmNWYzOWZjMzU4OWZiIiwidXNlcl9pZCI6MX0.MYR_VqcW70nrLMX3OErwPAoKtdsC2LVmMXRga_O4KHo"
+#   }
+# }

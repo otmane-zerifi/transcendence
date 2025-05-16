@@ -1,0 +1,27 @@
+<div class="auth-container">
+    <form>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="email" class="form-label text-white">Email:</label>
+            <input type="email" class="form-control bg-secondary border-0" id="email" name="email" required>
+            <h6 class="text-danger d-none mt-2" id="email-error">Please enter a valid email</h6>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="password" class="form-label text-white">Password:</label>
+            <input type="password" class="form-control bg-secondary border-0" id="password" name="password" required>
+        </div> 
+        <div class="otp d-none form-group flex-column mb-3">
+            <label for="otp-fa" class="form-label text-white">2FA:</label>
+            <input type="text" class="form-control bg-secondary border-0" id="otp-fa" name="otp-fa" required>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary mt-2 login">Sign In</button>
+            <button type="button" class="btn btn-info mt-2 d-none otp-verify">OTP verify</button>
+            <h6 class="text-success mt-2 d-none">Logged successfully!</h6>
+            <h6 class="text-danger mt-2 d-none" id="invalid-credentials">Invalid credentials!</h6>
+            <h6 class="text-danger mt-2 d-none" id="otp-error">Invalid or expired OTP!</h6>
+            <h6 class="text-danger mt-2 d-none" id="user-not-found">User not found!</h6>
+        </div>
+    </form>
+    <a class="signup link-secondary mt-3 text-center" href="/signup" data-link="signup">first time here? sign up</a>
+    <a class="42auth link-secondary mt-1 text-center" href="/oauth" data-link="oauth">are you a 42 student? authenticate with 42 intra</a>
+</div>

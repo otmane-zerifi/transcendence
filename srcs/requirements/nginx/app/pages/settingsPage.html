@@ -1,0 +1,39 @@
+<div class="settings-container">
+    <div class="profile-picture-container">
+        <div class="profile-picture"></div>
+        <div class="edit-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+            </svg>
+        </div>
+    </div>
+    <div class="settings-box">
+        <div class="input-box">
+            <label for="username" class="input-title">Username</label>
+            <input type="text" id="username" class="input-field" value="username" disabled>
+        </div>
+        <div class="input-box">
+            <label for="email" class="input-title">Email</label>
+            <input type="email" id="email" class="input-field" value="email@example.com" disabled>
+        </div>
+        <div class="input-box">
+            <label for="change-password" class="input-title">Change Password</label>
+            <input type="text" id="change-password" class="action-button" value="">
+        </div>
+        <div class="input-box">
+            <label for="confirm-password" class="input-title">Confirm Password</label>
+            <input type="text" id="confirm-password" class="action-button" value="">
+        </div>
+        <!-- Centered Two-Factor Authentication -->
+        <div class="input-box two-factor-auth" style="grid-column: span 2;">
+            <label for="2fa-switch" class="input-title">Two-Factor Authentication</label>
+            <label class="switch">
+                <input type="checkbox" id="2fa-switch">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+    <div class="action-buttons">
+        <button class="save-btn">Save Changes</button>
+    </div>
+</div>

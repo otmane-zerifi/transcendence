@@ -1,0 +1,30 @@
+<div class="auth-container">
+    <form action="" method="post">
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="user_name" class="form-label text-white">Username</label>
+            <input type="text" class="form-control bg-secondary border-0" id="user_name" name="user_name" required>
+            <h6 class="text-danger d-none" id="username-error">Username already exists</h6>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="email" class="form-label text-white">Email</label>
+            <input type="email" class="form-control bg-secondary border-0" id="email" name="email" required>
+            <h6 class="text-danger d-none">Email already exists</h6>
+            <h6 class="text-danger d-none" id="email-error">Please enter a valid email</h6>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="password" class="form-label text-white">Password</label>
+            <input type="password" class="form-control bg-secondary border-0" id="password" name="password" required>
+        </div>
+        <div class="form-group d-flex flex-column mb-3">
+            <label for="confirm-password" class="form-label text-white">Confirm Password</label>
+            <input type="password" class="form-control bg-secondary border-0" id="confirm-password" name="confirm-password" required>
+            <h6 class="text-danger d-none">Password do not match</h6>
+        </div>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary mt-2 register">Sign Up</button>
+            <h6 class="text-success login-success mt-2 d-none">success! login now.</h6>
+        </div>
+    </form>
+    <a class="signin link-secondary mt-3 text-center" href="/signin" data-link="signin">already have an account? sign in</a>
+    <a class="42auth link-secondary mt-1 text-center" href="/oauth" data-link="oauth">are you a 42 student? authenticate with 42 intra</a>
+</div>

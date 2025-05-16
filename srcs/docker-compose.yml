@@ -1,0 +1,105 @@
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./requirements/nginx/app:/app
+      - ./requirements/nginx/conf:/etc/nginx/conf.d
+      - media_volume:/app/media
+    networks:
+      - transcendence
+    depends_on:
+      - backend
+      - chat
+    restart: always
+  
+  chat:
+    build:
+      context: ./requirements/Chat/
+      dockerfile: Dockerfile
+    expose:
+      - "8000"
+    environment:
+      - DJANGO_SETTINGS_MODULE=ft_transcendence.settings
+      - DATABASE_URL=postgres://django_project_user:123@db:5432/django_project
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=django_project
+      - POSTGRES_USER=django_project_user
+      - POSTGRES_PASSWORD=123
+    volumes:
+      - ./requirements/Chat:/app
+      - media_volume:/app/media
+    networks:
+      - transcendence
+    depends_on:
+      - db
+      - redis
+    restart: always
+
+  backend:
+    build:
+      context: ./requirements/back/
+      dockerfile: Dockerfile
+    expose:
+      - "8080"
+    environment:
+      - DJANGO_SETTINGS_MODULE=ft_transcendence.settings
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=django_project
+      - POSTGRES_USER=django_project_user
+      - POSTGRES_PASSWORD=123
+    volumes:
+      - ./requirements/back/backend:/backend
+      - /backend/venv
+      - media_volume:/backend/media 
+    networks:
+      - transcendence
+    depends_on:
+      - db
+      - redis
+    restart: always 
+
+  db:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: django_project_user
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: django_project
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - transcendence
+    restart: always
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6380:6379"
+    networks:
+      - transcendence
+    volumes:
+      - redis_data:/data
+    restart: always
+    command: redis-server --appendonly yes
+
+volumes:
+  postgres_data:
+  redis_data:
+  media_volume: 
+
+networks:
+  transcendence:
+    driver: bridge

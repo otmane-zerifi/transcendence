@@ -1,0 +1,292 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <!-- Link to the CSS file -->
+    <script src="{% static '/chat/socket.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'chat/css/styles.css' %}">
+    <style>
+        /* Minimal CSS for buttons and layout without images */
+        /* Minimal CSS for buttons and layout without images */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+        #messages {
+        display: flex;
+        flex-direction: column; /* Stack messages vertically */
+        gap: 10px; /* Space between messages */
+        }
+
+        .chat-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .list-users {
+            width: 25%;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ddd;
+        }
+
+        .list-users-header {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #eaeaea;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .toggle-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .list-users-ul {
+            list-style: none;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .list-users-ul.active {
+            display: block;
+        }
+
+        .list-users-ul:not(.active) {
+            display: none;
+        }
+
+        .room-conversions {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header-details h3 {
+            margin: 0;
+        }
+
+        .header-details span {
+            font-size: 12px;
+            color: green;
+        }
+
+        .menu-btn {
+            background-color: #eaeaea;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .menu-btn:after {
+            content: '\2807'; /* Unicode for vertical ellipsis */
+            font-size: 16px;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            display: none;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .message-input-area {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .message-input {
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        .chat-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .emoji-btn,
+        .send-btn {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .emoji-btn:before {
+            content: '\1F60A'; /* Unicode for smile emoji */
+            font-size: 16px;
+        }
+
+        .send-btn:before {
+            content: '\1F680'; /* Unicode for rocket emoji */
+            font-size: 16px;
+        }
+
+        .emoji-list {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .emoji {
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .message {
+    display: flex; /* Enable flexbox for alignment */
+    align-items: center; /* Vertically align content */
+    max-width: 70%; /* Limit message width */
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word; /* Handle long words */
+}
+
+.message.incoming {
+    background-color: #f1f1f1;
+    justify-content: flex-start; /* Align to the left */
+    margin-left: 0; /* Stick to the left */
+}
+
+.message.outgoing {
+    background-color: #4CAF50;
+    color: white;
+    justify-content: flex-end; /* Align to the right */
+    margin-left: auto; /* Push to the right */
+}
+
+
+        /* Avatar image styling */
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Message text styling */
+        .message-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Styling for message time */
+        .message-time {
+            font-size: 0.8em;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+    </style>
+<body>
+    <div class="chat-container">
+        <div class="list-users">
+            <div class="list-users-header">
+                <button id="chats-tab" class="toggle-btn active">Chats</button>
+                <button id="friends-tab" class="toggle-btn">Friends</button>
+            </div>
+            <ul id="friends-content" class="list-users-ul">
+                <!-- Friends content here -->
+            </ul>
+            <ul id="chats-content" class="list-users-ul active">
+                <!-- Chats content here -->
+            </ul>
+        </div>
+
+        <div class="room-conversions">
+            <div class="chat-header">
+                <div class="header-details">
+                    <h3 class="header-name">User 1</h3>
+                    <span class="header-status">Online</span>
+                </div>
+                <button class="menu-btn"></button>
+            </div>
+            <div class="conversation-area">
+                <div class="messages" id="messages">
+                    <!-- Incoming message -->
+                    <div class="message incoming">
+                        <div class="user-avatar">
+                            <img src="user-avatar.jpg" alt="User Avatar">
+                        </div>
+                        <div class="message-text">
+                            <p>Hey, how are you?</p>
+                            <div class="message-time">12:45 PM</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Outgoing message -->
+                    <div class="message outgoing">
+                        <div class="user-avatar">
+                            <img src="my-avatar.jpg" alt="My Avatar">
+                        </div>
+                        <div class="message-text">
+                            <p>I'm good, thanks for asking!</p>
+                            <div class="message-time">12:46 PM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="empty-conversation d-none">
+                    <p></p>
+                </div>
+                <div class="message-input-area">
+                    <textarea class="message-input" id="messageInput" placeholder="Type your message..."></textarea>
+                    <div class="chat-buttons">
+                        <button class="emoji-btn" id="emojiButton"></button>
+                        <button class="send-btn" id="sendButton"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            handleRouting();
+        });
+    </script>
+</body>

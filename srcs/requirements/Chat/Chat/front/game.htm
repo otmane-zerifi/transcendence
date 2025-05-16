@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match Details</title>
+    <style>
+        /* Reuse the styles from the previous page for consistency */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        } */
+
+        #match-details {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+
+        .detail-section {
+            margin-bottom: 20px;
+        }
+
+        .detail-section h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .player-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .player-card {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav>
+        <a href="index.html">Match History</a>
+        <a href="match-details.html">Match Details</a>
+    </nav> -->
+
+    <div class="container">
+        <div id="match-details" class="loading">
+            Loading match details...
+        </div>
+    </div>
+
+    <script>
+        // Configuration (replace with your actual backend URL)
+        const API_BASE_URL = 'http://127.0.0.1:8000/api/game';
+
+        // Fetch and display match details
+        async function fetchMatchDetails() {
+            const matchDetailsElement = document.getElementById('match-details');
+            
+            // Get the match ID from localStorage
+            const matchId = localStorage.getItem('selectedMatchId');
+            
+            // If no match ID, show an error
+            if (!matchId) {
+                matchDetailsElement.innerHTML = `
+                    <div class="error">
+                        <p>No match selected. Please go back to Match History.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Fetch match details
+                const response = await fetch(`${API_BASE_URL}/${matchId}`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch match details');
+                }
+                
+                const matchDetails = await response.json();
+                
+                // Populate match details
+                matchDetailsElement.innerHTML = `
+                    <div class="detail-section">
+                        <h1>${matchDetails.winner} vs ${matchDetails.loser}</h1>
+                        <p>Date: ${matchDetails.date}</p>
+                        <p>Final Score: ${matchDetails.winner_score} - ${matchDetails.loser_score}</p>
+                    </div>
+                `;
+            } catch (error) {
+                matchDetailsElement.innerHTML = `
+                    <div class="error">
+                        <p>Error loading match details: ${error.message}</p>
+                        <button onclick="window.location.href='index.html'">Back to Match History</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Run on page load
+        fetchMatchDetails();
+    </script>
+</body>
+</html>

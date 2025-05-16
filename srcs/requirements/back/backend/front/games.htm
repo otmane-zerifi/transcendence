@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Match History App</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        /* nav {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        } */
+
+        /* Match List Styles */
+        #match-list {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .match-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .match-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Match Details Styles */
+        #match-details {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- <nav>
+        <a href="games.htm">Match History</a>
+        <a href="match-details.html">Match Details</a>
+    </nav> -->
+
+    <div class="container">
+        <h1>Match History</h1>
+        <div id="match-list">
+            <!-- Matches will be dynamically populated here -->
+        </div>
+    </div>
+
+    <script>
+        // Configuration (replace with your actual backend URL)
+        const API_BASE_URL = 'http://127.0.0.1:8000/api/games';
+
+        // Fetch and display match history
+        async function fetchMatchHistory() {
+            const matchListElement = document.getElementById('match-list');
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/`);
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch match history');
+                }
+                
+                const games = await response.json();
+                
+                // Clear any existing content
+                matchListElement.innerHTML = '';
+                
+                // Populate match list
+                games.forEach(game => {
+                    const matchElement = document.createElement('div');
+                    matchElement.classList.add('match-item');
+                    matchElement.innerHTML = `
+                        <h3>${game.Winner} vs ${game.Loser}</h3>
+                        <p>Date: ${game.date}</p>
+                        <p>Result: ${game.winner_score} - ${game.loser_score}</p>
+                    `;
+                    matchElement.addEventListener('click', () => {
+                        // Redirect to match details or set match ID in localStorage
+                        localStorage.setItem('selectedMatchId', game.id);
+                        window.location.href = 'game.htm';
+                    });
+                    
+                    matchListElement.appendChild(matchElement);
+                });
+            } catch (error) {
+                matchListElement.innerHTML = `
+                    <div class="error">
+                        <p>Error loading matches: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Run on page load if on match history page
+        if (document.getElementById('match-list')) {
+            fetchMatchHistory();
+        }
+    </script>
+</body>
+</html>

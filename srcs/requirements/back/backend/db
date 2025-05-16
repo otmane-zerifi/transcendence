@@ -1,0 +1,64 @@
+GAME:
+    - ID : int
+    - Winner : USER "FK"
+    - Loser : USER "FK"
+    - Winner Score : int
+    - Loser Score : int
+    - Date : time
+
+FRIENDS:
+    - ID : int
+    - Friend_1 : USER "FK"
+    - Friend_2 : USER "FK"
+
+USER:
+    - ID : int
+    - Authentication Method : enum (Classic, Intra)
+    - E-mail : e-mail
+    - Password : password
+    - Username : VARCHAR(100)
+    - Avatar : image
+    - Total Games Played : int
+    - Total Wins : int
+    - Total Losses : int
+    - Created At : time
+    - Last Logging : time
+    # - Online Status : bool    ==> "Websocket"
+
+
+{
+  "message": "User registered successfully!",
+  "user": {
+    "id": 1,
+    "username": "ChicMode",
+    "email": "chicmodeactivated@gmail.com",
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTgwMDA0NywiaWF0IjoxNzM1NzEzNjQ3LCJqdGkiOiJkYzk5ZmUyZDgzODQ0OThmODUxOThlOTQyYzg2NTJmZCIsInVzZXJfaWQiOjF9.AM4r7tmW2kDDyGLIYysqLwQgobunQdr5vq7QJphDaJ4",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzEzOTQ3LCJpYXQiOjE3MzU3MTM2NDcsImp0aSI6IjRhMDE3ZjJkNzJmMzQwN2Q4MzlmNmZkZjQwMTBiMjBmIiwidXNlcl9pZCI6MX0.Wzg2bb-kK2T3sm99QULqlDmvUIvUn_R5m5XIlBvlKRw"
+  }
+}
+
+{
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzE0NDc2LCJpYXQiOjE3MzU3MTM2NDcsImp0aSI6ImM4NzA2YzhiMDIwZDQ1ZGQ5ZTc0ODM5NWIyYzU2ZjZhIiwidXNlcl9pZCI6MX0.s7XosdtLiSqiGTl9Fu1kg99Vnb53wUo3KU4mSkbXoDY",
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTgwMDU3NiwiaWF0IjoxNzM1NzE0MTc2LCJqdGkiOiI2M2U5ODlmNWIyMWI0YmI5ODgyNTZmOTZlOWY2ODczZiIsInVzZXJfaWQiOjF9.cExTWI2LAcdH1nXo4xpOZ7szLfJg3NjVsA-zv51w_0U"
+}
+
+
+
+
+{
+  "message": "Need to verify 2FA!",
+  "user": {
+    "id": 1,
+    "username": "ChicMode",
+    "email": "chicmodeactivated@gmail.com",
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTgxNTIyNiwiaWF0IjoxNzM1NzI4ODI2LCJqdGkiOiJkMjFhYjFiOTE4ZGE0Y2QxOGRjNmIxODdjNTk0MGJhOSIsInVzZXJfaWQiOjEsIjJmYSI6ZmFsc2V9.L3OuGL1lHBZ4S61KGeEZPIF6AiM9M0wB9ZryR5rU1h0",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzI5MTI2LCJpYXQiOjE3MzU3Mjg4MjYsImp0aSI6IjU3NjQ2Mjg3YWQyZTRkZWU5MTBmZjBmN2YxOTZlZDUzIiwidXNlcl9pZCI6MSwiMmZhIjpmYWxzZX0.TnymDSRuZK8DqUJupNoCbnYBQmCW_ekDWvEBzLaOIJs"
+  }
+}
+
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTgxNTI3MywiaWF0IjoxNzM1NzI4ODczLCJqdGkiOiI4MTdiOTkyNDgyYWY0NDc1Yjc0NjJkMmU2YWQyNmI5NyIsInVzZXJfaWQiOjEsIjJmYSI6dHJ1ZX0.zt7RYZPUcRHv9Zwi1efjFwZrnmVuXP8q8praj7xhDxo",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzI5MTczLCJpYXQiOjE3MzU3Mjg4NzMsImp0aSI6IjA0MDViOWQxODNkZTQ5MDVhYjhmNzg3ZTljZDg5NjkzIiwidXNlcl9pZCI6MSwiMmZhIjp0cnVlfQ.fl4EDzifVK2WHS6p8q4ox8SSZ-c01Urd9_RHb3BWpmY"
+
+
+  "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1NzI5MjUzLCJpYXQiOjE3MzU3Mjg4NzMsImp0aSI6IjdjMjVhNDYwZjQ4NjRkNTliNmFhOTQyYTI2YTg1MWFiIiwidXNlcl9pZCI6MSwiMmZhIjp0cnVlfQ.cVrADXAqQ2YQEZ56GK3mD56Ycuc7l1GS9O2IxcIMFK0",
+  "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTczNTgxNTM1MywiaWF0IjoxNzM1NzI4OTUzLCJqdGkiOiIwNzRlMjUzZWM3ODI0ZTgwYWY1MmY5ZTZkNGQxMzM4OSIsInVzZXJfaWQiOjEsIjJmYSI6dHJ1ZX0.zvYcFbQ3HW05Xo-Tps8K2j9wqlMOS-IFX-gTq1ezkBk"

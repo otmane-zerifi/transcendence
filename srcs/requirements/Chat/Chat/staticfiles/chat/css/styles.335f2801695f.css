@@ -1,0 +1,171 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
+
+.chat-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    padding: 15px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #495057;
+    color: white;
+    cursor: pointer;
+}
+
+.toggle-btn.active {
+    background-color: #28a745;
+}
+
+.list-users-ul {
+    list-style-type: none;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.main-chat {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.header-details {
+    margin-left: 10px;
+}
+
+.header-name {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.header-status {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.menu-icon {
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.conversation-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.messages {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.message-input-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-input {
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.chat-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.emoji-btn, .send-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.emoji-list {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-chat {
+        padding: 10px;
+    }
+
+    .chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-name {
+        font-size: 1.5rem;
+    }
+
+    .message-input {
+        font-size: 1rem;
+    }
+}
